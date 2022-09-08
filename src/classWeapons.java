@@ -5,9 +5,9 @@ public class classWeapons {
 
         String[] classArray = new String[4];
         classArray[0] = "Sword";
-        classArray[1] = "Mage";
-        classArray[2] = "Bard";
-        classArray[3] = "Jeff";
+        classArray[1] = "Staff";
+        classArray[2] = "Guitar";
+        classArray[3] = "Spork";
 
         System.out.println("Choose Your Weapon (Enter Number) ");
         System.out.println("1. " + classArray[0]);
