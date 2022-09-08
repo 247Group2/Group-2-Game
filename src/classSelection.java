@@ -3,36 +3,32 @@ public class classSelection {
 
     public static void classSelector() {
 
-        String[] classArray = new String[4];
-        classArray[0] = "Knight";
-        classArray[1] = "Mage";
-        classArray[2] = "Bard";
-        classArray[3] = "Jeff";
+        String[] characters = {"Knight", "Mage", "Bard", "Jeff"};
 
         System.out.println("Choose Your Class (Enter Number) ");
-        System.out.println("1. " + classArray[0]);
-        System.out.println("2. " + classArray[1]);
-        System.out.println("3. " + classArray[2]);
-        System.out.println("4. " + classArray[3]);
+        System.out.println("1. " + characters[0]);
+        System.out.println("2. " + characters[1]);
+        System.out.println("3. " + characters[2]);
+        System.out.println("4. " + characters[3]);
         System.out.println("-------------------");
 
         Scanner classSelector = new Scanner(System.in);
         String chooseClass = classSelector.nextLine();
         if (chooseClass.equals("1")) {
             System.out.println("-------------------");
-            System.out.println("You have selected " + classArray[0]);
+            System.out.println("You have selected " + characters[0]);
             System.out.println("-------------------");
         }else if (chooseClass.equals("2")) {
             System.out.println("-------------------");
-            System.out.println("You have selected " + classArray[1]);
+            System.out.println("You have selected " + characters[1]);
             System.out.println("-------------------");
         }else if (chooseClass.equals("3")) {
             System.out.println("-------------------");
-            System.out.println("You have selected " + classArray[2]);
+            System.out.println("You have selected " + characters[2]);
             System.out.println("-------------------");
         }else if (chooseClass.equals("4")){
             System.out.println("-------------------");
-            System.out.println("You have selected " + classArray[3]);
+            System.out.println("You have selected " + characters[3]);
             System.out.println("-------------------");
 
         }
