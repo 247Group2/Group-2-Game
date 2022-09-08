@@ -4,7 +4,7 @@ public class classWeapons {
     public static void classWeapon() {
 
         String[] classArray = new String[4];
-        classArray[0] = "Knight";
+        classArray[0] = "Sword";
         classArray[1] = "Mage";
         classArray[2] = "Bard";
         classArray[3] = "Jeff";
