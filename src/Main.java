@@ -5,23 +5,26 @@ public class Main {
 
         String line1 = new String(new char[44]).replace('\0', '-');
         String line2 = new String(new char[22]).replace('\0', '#');
+        String line3 = new String(new char[10]).replace('\0', '*');
 
         // System objects
         Scanner in = new Scanner(System.in);
         Random rand = new Random();
 
         // Enemy Variables
-        String[] enemies = {"GOBLIN", "SHREK", "DRAGON", "BOB THE BUILDER", "PEASANT", "CLIFFORD THE BIG RED DOG" };
+        String[] enemies = {"GOBLIN", "SHREK", "DRAGON", "BOB THE BUILDER", "FERAL PEASANT", "CLIFFORD THE BIG RED DOG", "FERAL GIANT", "MICKEY MOUSE", "SEPHIROTH", "EUSTICE" };
         int maxEnemyHealth = 100;
         int enemyAttackDamage = 35;
 
         //Player Variables
-        String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD"};
+        String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
         int maxCharHealth = 150; //health player starts with
         int attackDamage = 40; //attack damage from player
-        int numHealthPotions = 3; //amount of health potions the player starts off with
-        int healthPotionHealAmount = 20; //how much the potion heals the player
+        int numHealthPotions = 2; //amount of health potions the player starts off with
+        int healthPotionHealAmount = 30; //how much the potion heals the player
         int healthPotionDropChance = 45; //Percentage an enemy drops a health potion
+
+        System.out.println(line3 + "\nDUNGEON !!!\n" + line3);
 
         boolean running = true;
 
@@ -42,7 +45,7 @@ public class Main {
             System.out.println("\n\t# A WILD " + enemy + " HAS APPEARED! #\n");
             System.out.println(line1);
 
-            while ((enemyHealth > 10) && (characterHealth > 15)) {
+            while ((enemyHealth > 0) ) {
                 System.out.println("\tYOUR HP: " + characterHealth);
                 System.out.println("\t" + enemy + "'s HP " + enemyHealth);
                 System.out.println("\n\tWHAT WOULD YOU TO DO?");
@@ -95,7 +98,7 @@ public class Main {
             System.out.println(line1);
             System.out.println(" # " + enemy + " was defeated! # ");
             System.out.println(" # You have " + characterHealth + " HP left #");
-            if(rand.nextInt(100) < healthPotionDropChance) {
+            if(rand.nextInt(45) < healthPotionDropChance) {
                 numHealthPotions++;
                 System.out.println(" # The " + enemy + " dropped a health potion! # ");
                 System.out.println(" # You now have " + numHealthPotions + " health potion(s). # ");
