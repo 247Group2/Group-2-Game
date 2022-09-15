@@ -15,8 +15,8 @@ public class Main {
 
         // Game Variables
         String[] enemies = {"GOBLIN", "SHREK", "DRAGON", "BOB THE BUILDER", "FERAL PEASANT", "CLIFFORD THE BIG RED DOG", "FERAL GIANT", "MICKEY MOUSE", "SEPHIROTH", "EUSTICE"};
-        int maxEnemyHealth = 75;
-        int enemyAttackDamage = 25;
+        int maxEnemyHealth = 15;
+        int enemyAttackDamage = 5;
 
         //Player Variables
         String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
@@ -39,12 +39,14 @@ public class Main {
         System.out.println("Welcome to the Dungeon " + playerName + ", Your character is a " + character);
 
         int characterHealth = rand.nextInt(maxCharHealth);
-        int enemyHealth = rand.nextInt(maxEnemyHealth);
+
 
         GAME:
         while (running) {
             System.out.println(line1);
 
+
+            int enemyHealth = rand.nextInt(maxEnemyHealth);
 
             String enemy = enemies[rand.nextInt(enemies.length)];
             System.out.println("\n\t# A WILD " + enemy + " HAS APPEARED! #\n");
