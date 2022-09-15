@@ -20,14 +20,14 @@ public class Main {
 
         //Player Variables
         String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
-        int maxCharHealth = 100; //health player starts with
-        int punchDamage = 50; //attack damage from player
-        int kickDamage = 50; //attack damage from player
-        int slashDamage = 50; //attack damage from player
-        int biteDamage = 50; //attack damage from player
-        int numHealthPotions = 3; //amount of health potions the player starts off with
-        int healthPotionHealAmount = 30; //how much the potion heals the player
-        int healthPotionDropChance = 50; //Percentage an enemy drops a health potion
+        int maxCharHealth = 100;
+        int punchDamage = 50;
+        int kickDamage = 50;
+        int slashDamage = 50;
+        int biteDamage = 50;
+        int numHealthPotions = 3;
+        int healthPotionHealAmount = 30;
+        int healthPotionDropChance = 50;
 
         System.out.println(line3 + "\nDUNGEON !!!\n" + line3);
 
