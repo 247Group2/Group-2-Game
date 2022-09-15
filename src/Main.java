@@ -1,7 +1,7 @@
 
-
 import java.util.*;
 public class Main {
+
 
     public static void main(String[] args) {
 
@@ -15,12 +15,57 @@ public class Main {
 
         // Game Variables
         String[] enemies = {"GOBLIN", "SHREK", "DRAGON", "BOB THE BUILDER", "FERAL PEASANT", "CLIFFORD THE BIG RED DOG", "FERAL GIANT", "MICKEY MOUSE", "SEPHIROTH", "EUSTICE"};
-        int maxEnemyHealth = 15;
-        int enemyAttackDamage = 5;
+        int maxEnemyHealth = 50;
+        int enemyAttackDamage = 15;
+
+        System.out.print("Enter Your Name: ");
+        String playerName = in.nextLine();
+
+
+        //Scanner for classselector
+        Scanner cSelec = new Scanner(System.in);
+        System.out.println("Choose Your Class: ");
+        System.out.println(" Press 1 for KNIGHT");
+        System.out.println(" Press 2 for MAGE");
+        System.out.println(" Press 3 for PEASANT");
+        System.out.println(" Press 4 for WIZARD");
+        System.out.println(" Press 5 for JEFF");
+        String classSelection = cSelec.nextLine();
+
+        //Constructor for Class Selection
+        classSelector classS1 = new classSelector("Knight", "SWORD", 100);
+        classSelector classS2 = new classSelector("MAGE", "STAFF", 75);
+        classSelector classS3 = new classSelector("PEASANT", "FISTS", 40);
+        classSelector classS4 = new classSelector("WIZARD", "STAFF", 75);
+        classSelector classS5 = new classSelector("JEFF", "RUBBER CHICKEN", 125);
+
+        int health = 0;
+        String character = "default";
+        if (classSelection.equals("1")) {
+            health = classS1.HP;
+            character = classS1.classSelect;
+        } else if (classSelection.equals("2")) {
+            health = classS2.HP;
+            character = classS2.classSelect;
+        } else if (classSelection.equals("3")) {
+            health = classS3.HP;
+            character = classS3.classSelect;
+        } else if (classSelection.equals("4")) {
+            health = classS4.HP;
+            character = classS4.classSelect;
+        } else if (classSelection.equals("5")) {
+            health = classS5.HP;
+            character = classS5.classSelect;
+        }
+
+        else {
+            System.out.println("\tINVALID COMMAND!!!");
+        }
+
 
         //Player Variables
-        String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
-        int maxCharHealth = 100;
+        // String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
+        //int maxCharHealth = 100;
         int punchDamage = 50;
         int kickDamage = 50;
         int slashDamage = 50;
@@ -33,12 +78,11 @@ public class Main {
 
         boolean running = true;
 
-        System.out.print("Enter Your Name: ");
-        String playerName = in.nextLine();
-        String character = characters[rand.nextInt(characters.length)];
+
+        // String character = characters[rand.nextInt(characters.length)];
         System.out.println("Welcome to the Dungeon " + playerName + ", Your character is a " + character);
 
-        int characterHealth = rand.nextInt(maxCharHealth);
+        int characterHealth = health;
 
 
         GAME:
@@ -185,4 +229,3 @@ public class Main {
 
     }
 }
-
