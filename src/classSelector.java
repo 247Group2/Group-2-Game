@@ -1,10 +1,9 @@
 public class classSelector {
-    public String classSelect;
-    public String weapon;
+    public String classCharacter;
     public int HP;
-    classSelector(String myClassSelector, String myWeapon, int myHP){
-        this.classSelect = myClassSelector;
-        this.weapon = myWeapon;
+
+    classSelector(String myClassSelector, int myHP) {
+        this.classCharacter = myClassSelector;
         this.HP = myHP;
     }
 }

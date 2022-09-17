@@ -1,231 +1,214 @@
-
 import java.util.*;
-public class Main {
 
+public class Main {
 
     public static void main(String[] args) {
 
-        String line1 = new String(new char[44]).replace('\0', '-');
-        String line2 = new String(new char[22]).replace('\0', '#');
-        String line3 = new String(new char[10]).replace('\0', '*');
+        display d = new display();
+        characterClass c = new characterClass();
+        enemyClass e = new enemyClass();
+        weaponClass w = new weaponClass();
 
-        // System objects
         Scanner in = new Scanner(System.in);
+        Scanner classSelect = new Scanner(System.in);
         Random rand = new Random();
 
-        // Game Variables
-        String[] enemies = {"GOBLIN", "SHREK", "DRAGON", "BOB THE BUILDER", "FERAL PEASANT", "CLIFFORD THE BIG RED DOG", "FERAL GIANT", "MICKEY MOUSE", "SEPHIROTH", "EUSTICE"};
-        int maxEnemyHealth = 50;
-        int enemyAttackDamage = 15;
 
-        System.out.print("Enter Your Name: ");
-        String playerName = in.nextLine();
+        //CONSTRUCTOR FOR CLASS SELECTION
+        classSelector classS1 = new classSelector(c.character[0], 100);
+        classSelector classS2 = new classSelector(c.character[1], 75);
+        classSelector classS3 = new classSelector(c.character[2], 50);
+        classSelector classS4 = new classSelector(c.character[3], 75);
+        classSelector classS5 = new classSelector(c.character[4], 125);
 
+        System.out.print("ENTER YOUR NAME: ");
+        String playerName = in.nextLine().toUpperCase(Locale.ROOT); // This will capitalize the input
 
-        //Scanner for classselector
-        Scanner cSelec = new Scanner(System.in);
-        System.out.println("Choose Your Class: ");
-        System.out.println(" Press 1 for KNIGHT");
-        System.out.println(" Press 2 for MAGE");
-        System.out.println(" Press 3 for PEASANT");
-        System.out.println(" Press 4 for WIZARD");
-        System.out.println(" Press 5 for JEFF");
-        String classSelection = cSelec.nextLine();
+        System.out.println("\tCHOOSE YOUR CLASS: ");
+        System.out.println("\t-> PRESS 1 FOR KNIGHT ");
+        System.out.println("\t-> PRESS 2 FOR MAGE");
+        System.out.println("\t-> PRESS 3 FOR PEASANT");
+        System.out.println("\t-> PRESS 4 FOR WIZARD");
+        System.out.println("\t-> PRESS 5 FOR JEFF");
+        String cS = classSelect.nextLine();
 
-        //Constructor for Class Selection
-        classSelector classS1 = new classSelector("Knight", "SWORD", 100);
-        classSelector classS2 = new classSelector("MAGE", "STAFF", 75);
-        classSelector classS3 = new classSelector("PEASANT", "FISTS", 40);
-        classSelector classS4 = new classSelector("WIZARD", "STAFF", 75);
-        classSelector classS5 = new classSelector("JEFF", "RUBBER CHICKEN", 125);
-
+        //IF STATEMENT
         int health = 0;
         String character = "default";
-        if (classSelection.equals("1")) {
-            health = classS1.HP;
-            character = classS1.classSelect;
-        } else if (classSelection.equals("2")) {
-            health = classS2.HP;
-            character = classS2.classSelect;
-        } else if (classSelection.equals("3")) {
-            health = classS3.HP;
-            character = classS3.classSelect;
-        } else if (classSelection.equals("4")) {
-            health = classS4.HP;
-            character = classS4.classSelect;
-        } else if (classSelection.equals("5")) {
-            health = classS5.HP;
-            character = classS5.classSelect;
+        switch (cS) {
+            case "1" -> {
+                health = classS1.HP;
+                character = classS1.classCharacter;
+            }
+            case "2" -> {
+                health = classS2.HP;
+                character = classS2.classCharacter;
+            }
+            case "3" -> {
+                health = classS3.HP;
+                character = classS3.classCharacter;
+            }
+            case "4" -> {
+                health = classS4.HP;
+                character = classS4.classCharacter;
+            }
+            case "5" -> {
+                health = classS5.HP;
+                character = classS5.classCharacter;
+            }
+            default -> System.out.println("\tINVALID COMMAND!!!");
         }
 
-        else {
-            System.out.println("\tINVALID COMMAND!!!");
-        }
 
 
-        //Player Variables
-        // String[] characters = {"KNIGHT", "MAGE", "PEASANT", "JEFF", "WIZARD", "MR HANKEY", "COURAGE THE COWARDLY DOG"};
-        //int maxCharHealth = 100;
-        int punchDamage = 50;
-        int kickDamage = 50;
-        int slashDamage = 50;
-        int biteDamage = 50;
-        int numHealthPotions = 3;
-        int healthPotionHealAmount = 30;
-        int healthPotionDropChance = 50;
+        System.out.println(d.line1 + "\n WELCOME " + playerName + " TO THE DUNGEON! YOUR CHARACTER IS A "
+                + character + "!\n" + d.line1);
 
-        System.out.println(line3 + "\nDUNGEON !!!\n" + line3);
-
-        boolean running = true;
-
-
-        // String character = characters[rand.nextInt(characters.length)];
-        System.out.println("Welcome to the Dungeon " + playerName + ", Your character is a " + character);
 
         int characterHealth = health;
 
 
         GAME:
-        while (running) {
-            System.out.println(line1);
+        while (true) {
+            System.out.println(d.line1);
 
+            int enemyHealth = rand.nextInt(e.maxEnemyHealth);
 
-            int enemyHealth = rand.nextInt(maxEnemyHealth);
-
-            String enemy = enemies[rand.nextInt(enemies.length)];
+            String enemy = e.enemies[rand.nextInt(e.enemies.length)];
             System.out.println("\n\t# A WILD " + enemy + " HAS APPEARED! #\n");
-            System.out.println(line1);
+            System.out.println(d.line1);
 
+            label:
             while (enemyHealth > 0) {
-                System.out.println("\tYour HP: " + characterHealth);
-                System.out.println("\t" + enemy + "'s HP " + enemyHealth);
-                System.out.println("\n\tWhat would you like to do?");
-                System.out.println("\t1. Punch");
-                System.out.println("\t2. Kick");
-                System.out.println("\t3. Slash");
-                System.out.println("\t4. Bite");
-                System.out.println("\t5. Drink Health Potion");
-                System.out.println("\t6. Run!");
+                System.out.println("\tYOUR HP: " + characterHealth);
+                System.out.println("\t" + enemy + "'S HP: " + enemyHealth);
+                System.out.println("\n\tWHAT WOULD YOU LIKE TO DO?");
+                System.out.println("\t-> PRESS 1 TO USE SWORD");
+                System.out.println("\t-> PRESS 2 TO USE STAFF");
+                System.out.println("\t-> PRESS 3 TO USE FISTS");
+                System.out.println("\t-> PRESS 4 TO USE RUBBER CHICKEN");
+                System.out.println("\t-> PRESS 5 TO HEAL");
+                System.out.println("\t-> PRESS 6 TO RUN");
 
                 String input = in.nextLine();
-                if (input.equals("1")) {
-                    int Punch = rand.nextInt(punchDamage);
-                    int damageTaken = rand.nextInt(enemyAttackDamage);
+                switch (input) {
+                    case "1": {
+                        int Stab = rand.nextInt(w.SwordDP);
+                        int damageTaken = rand.nextInt(e.enemyAttackDamage);
 
-                    enemyHealth -= Punch;
-                    characterHealth -= damageTaken;
+                        enemyHealth -= Stab;
+                        characterHealth -= damageTaken;
 
-                    System.out.println("\t> You PUNCHED the " + enemy + " for " + Punch + " damage.");
-                    System.out.println("\t> You received " + damageTaken + " in retaliation!");
+                        System.out.println("\t> YOU'VE PUNCHED THE " + enemy + " FOR " + Stab + " DAMAGE!");
+                        System.out.println("\t> YOU'VE RECEIVE " + damageTaken + " IN RETALIATION!");
 
-                    if (characterHealth < 1) {
-                        System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+                        if (characterHealth < 1) {
+                            System.out.println("\t> YOU HAVE TAKEN TOO MUCH DAMAGE!");
+                            break label;
+                        }
                         break;
                     }
-                }
-                else if (input.equals("2")) {
-                    int Kick = rand.nextInt(kickDamage);
-                    int damageTaken = rand.nextInt(enemyAttackDamage);
+                    case "2": {
+                        int Staff = rand.nextInt(w.StaffDP);
+                        int damageTaken = rand.nextInt(e.enemyAttackDamage);
 
-                    enemyHealth -= Kick;
-                    characterHealth -= damageTaken;
+                        enemyHealth -= Staff;
+                        characterHealth -= damageTaken;
 
-                    System.out.println("\t> You KICKED the " + enemy + " for " + Kick + " damage.");
-                    System.out.println("\t> You received " + damageTaken + " in retaliation!");
+                        System.out.println("\t> YOU'VE STRUCK THE " + enemy + " FOR " + Staff + " DAMAGE!");
+                        System.out.println("\t> YOU'VE RECEIVE " + damageTaken + " IN RETALIATION!");
 
-                    if (characterHealth < 1) {
-                        System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+                        if (characterHealth < 1) {
+                            System.out.println("\t> YOU HAVE TAKEN TOO MUCH DAMAGE!");
+                            break label;
+                        }
                         break;
                     }
-                }
-                else if (input.equals("3")) {
-                    int Slash = rand.nextInt(slashDamage);
-                    int damageTaken = rand.nextInt(enemyAttackDamage);
+                    case "3": {
+                        int Punch = rand.nextInt(w.FistsDP);
+                        int damageTaken = rand.nextInt(e.enemyAttackDamage);
 
-                    enemyHealth -= Slash;
-                    characterHealth -= damageTaken;
+                        enemyHealth -= Punch;
+                        characterHealth -= damageTaken;
 
-                    System.out.println("\t> You STABBED the " + enemy + " for " + Slash + " damage.");
-                    System.out.println("\t> You received " + damageTaken + " in retaliation!");
+                        System.out.println("\t> YOU'VE PUNCHED THE " + enemy + " FOR " + Punch + " DAMAGE!");
+                        System.out.println("\t> YOU'VE RECEIVE " + damageTaken + " IN RETALIATION!");
 
-                    if (characterHealth < 1) {
-                        System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+                        if (characterHealth < 1) {
+                            System.out.println("\t> YOU HAVE TAKEN TOO MUCH DAMAGE!");
+                            break label;
+                        }
                         break;
                     }
-                }
-                else if (input.equals("4")) {
-                    int Bite = rand.nextInt(biteDamage);
-                    int damageTaken = rand.nextInt(enemyAttackDamage);
+                    case "4": {
+                        int Chicken = rand.nextInt(w.Rubberchicken);
+                        int damageTaken = rand.nextInt(e.enemyAttackDamage);
 
-                    enemyHealth -= Bite;
-                    characterHealth -= damageTaken;
+                        enemyHealth -= Chicken;
+                        characterHealth -= damageTaken;
 
-                    System.out.println("\t> YOU BIT THE " + enemy + " FOR " + Bite + " DAMAGE.");
-                    System.out.println("\t> You received " + damageTaken + " in retaliation!");
+                        System.out.println("\t> YOU'VE SLAPPED THE " + enemy + " FOR " + Chicken + " DAMAGE!");
+                        System.out.println("\t> YOU'VE RECEIVE " + damageTaken + " IN RETALIATION!");
 
-                    if (characterHealth < 1) {
-                        System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+                        if (characterHealth < 1) {
+                            System.out.println("\t> YOU HAVE TAKEN TOO MUCH DAMAGE!");
+                            break label;
+                        }
                         break;
                     }
-                }
-                else if (input.equals("5")) {
-                    if(numHealthPotions > 0) {
-                        characterHealth += healthPotionHealAmount;
-                        numHealthPotions--;
-                        System.out.println("\t> You drink a health potion, healing yourself for " + healthPotionHealAmount + " . "
-                                + "\n|t> You now have " + characterHealth + " HP."
-                                + "\n\t> You have " + numHealthPotions + " health potions left. \n");
-                    }
-                    else{
-                        System.out.println("\t> You have no health potions left! Defeat enemies for a chance to get one!\n");
-                    }
-                }
-                else if (input.equals("6")) {
-                    System.out.println("\tYou run away from the " + enemy + "!");
-                    continue GAME;
-                }
-                else {
-                    System.out.println("\tINVALID COMMAND!!!");
+                    case "5":
+                        if (w.numHealthPotions > 0) {
+                            characterHealth += w.healthPotionHealAmount;
+                            w.numHealthPotions--;
+                            System.out.println("\t> YOU'VE DRANK A HEALTH POTION, HEALING YOURSELF FOR " + w.healthPotionHealAmount + "."
+                                    + "\n\t> YOU HAVE " + characterHealth + " HP."
+                                    + "\n\t> YOU NOW HAVE " + w.numHealthPotions + " HEALTH POTIONS LEFT. \n");
+                        } else {
+                            System.out.println("\t-> YOU HAVE NO MORE HEALTH LEFT! DEFEAT ENEMIES TO GET ONE! <-\n");
+                        }
+                        break;
+                    case "6":
+                        System.out.println("\tYOU RAN AWAY FROM THE " + enemy + "!");
+                        continue GAME;
+                    default:
+                        System.out.println("\tINVALID COMMAND!!!");
+                        break;
                 }
             }
 
-            if (characterHealth < 1){
+
+            if (characterHealth < 1) {
                 System.out.println("You limp out of the dungeon, weak from battle.");
                 break;
             }
 
-            System.out.println(line1);
-            System.out.println(" # " + enemy + " was defeated! # ");
-            System.out.println(" # You have " + characterHealth + " HP left #");
-            if(rand.nextInt(100) < healthPotionDropChance) {
-                numHealthPotions++;
-                System.out.println(" # The " + enemy + " dropped a health potion! # ");
-                System.out.println(" # You now have " + numHealthPotions + " health potion(s). # ");
+            System.out.println(" # " + enemy + " WAS DEFEATED! # ");
+            System.out.println(" # YOU HAVE " + characterHealth + " HP LEFT #");
+            if (rand.nextInt(100) < w.healthPotionDropChance) {
+                w.numHealthPotions++;
+                System.out.println(" # THE " + enemy + " DROPPED A HEALTH POTION! # ");
+                System.out.println(" # YOU NOW HAVE " + w.numHealthPotions + " HEALTH POTION(S). # ");
             }
-            System.out.println(line1);
-            System.out.println("What would you like to do now?");
-            System.out.println("1. Continue Fighting");
-            System.out.println("2. Exit Dungeon");
-
+            System.out.println("WOULD YOU LIKE TO CONTINUE?");
+            System.out.println("\t-> PRESS 1 FOR YES");
+            System.out.println("\t-> PRESS 2 FOR NO");
             String input = in.nextLine();
 
-            while (!input.equals("1") && !input.equals("2")){
-                System.out.println("Invalid Command!");
+            while (!input.equals("1") && !input.equals("2")) {
+                System.out.println("INVALID COMMAND");
                 input = in.nextLine();
             }
-
-            if(input.equals("1")) {
-                System.out.println("You Continue on your Adventure");
-            }
-            else if(input.equals("2")){
-                System.out.println("You Exit the Dungeon, from your adventures");
+            if (input.equals("1")) {
+                System.out.println("YOU'VE CONTINUED THE JOURNEY");
+            } else {
+                System.out.println("YOU'VE EXITED THE DUNGEON");
                 break;
             }
         }
 
-        System.out.println("\n" + line2);
-        System.out.println("THANKS FOR PLAYING");
-        System.out.println(line2);
 
+        System.out.println("\n" + d.line2);
+        System.out.println("THANKS FOR PLAYING");
+        System.out.println(d.line2);
     }
 }
