@@ -63,9 +63,7 @@ import java.util.*;
             System.out.println(d.line1 + "\n WELCOME " + playerName + " TO THE DUNGEON! YOUR CHARACTER IS A "
                     + character + "!\n" + d.line1);
 
-
             int characterHealth = health;
-
 
             GAME:
             while (true) {
