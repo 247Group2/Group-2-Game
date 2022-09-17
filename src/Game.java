@@ -175,7 +175,7 @@ import java.util.*;
 
 
                 if (characterHealth < 1) {
-                    System.out.println("You limp out of the dungeon, weak from battle.");
+                    System.out.println("YOU'RE TOO WEAK TO CONTINUE!");
                     break;
                 }
 
@@ -204,8 +204,8 @@ import java.util.*;
             }
 
 
-            System.out.println("\n" + d.line2);
+            System.out.println("\n" + d.line3);
             System.out.println("THANKS FOR PLAYING");
-            System.out.println(d.line2);
+            System.out.println(d.line3);
         }
     }
