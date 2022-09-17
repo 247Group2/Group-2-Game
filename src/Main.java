@@ -57,9 +57,8 @@ public class Main {
                 character = classS5.classCharacter;
             }
             default -> System.out.println("\tINVALID COMMAND!!!");
+
         }
-
-
 
         System.out.println(d.line1 + "\n WELCOME " + playerName + " TO THE DUNGEON! YOUR CHARACTER IS A "
                 + character + "!\n" + d.line1);
@@ -176,7 +175,6 @@ public class Main {
                 }
             }
 
-
             if (characterHealth < 1) {
                 System.out.println("You limp out of the dungeon, weak from battle.");
                 break;
@@ -205,7 +203,6 @@ public class Main {
                 break;
             }
         }
-
 
         System.out.println("\n" + d.line2);
         System.out.println("THANKS FOR PLAYING");
