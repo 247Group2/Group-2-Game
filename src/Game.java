@@ -21,18 +21,20 @@ import java.util.*;
             classSelector classS4 = new classSelector(c.character[3], 75);
             classSelector classS5 = new classSelector(c.character[4], 125);
 
-            System.out.print("ENTER YOUR NAME: ");
+            System.out.println("\n\t\t\t" + d.line3 + "\n\t\t\t THE DUNGEON! \n\t\t\t" + d.line3);
+
+            System.out.print("\n\t-> ENTER YOUR NAME: ");
             String playerName = in.nextLine().toUpperCase(Locale.ROOT); // This will capitalize the input
 
-            System.out.println("\tCHOOSE YOUR CLASS: ");
-            System.out.println("\t-> PRESS 1 FOR KNIGHT ");
-            System.out.println("\t-> PRESS 2 FOR MAGE");
-            System.out.println("\t-> PRESS 3 FOR PEASANT");
-            System.out.println("\t-> PRESS 4 FOR WIZARD");
-            System.out.println("\t-> PRESS 5 FOR JEFF");
+            System.out.println("\t   CHOOSE YOUR CHARACTER: ");
+            System.out.println("\t    -> PRESS 1 FOR KNIGHT ");
+            System.out.println("\t    -> PRESS 2 FOR MAGE");
+            System.out.println("\t    -> PRESS 3 FOR PEASANT");
+            System.out.println("\t    -> PRESS 4 FOR WIZARD");
+            System.out.println("\t    -> PRESS 5 FOR JEFF");
             String cS = classSelect.nextLine();
 
-            //IF STATEMENT
+//     The switch case is for selecting your character
             int health = 0;
             String character = "default";
             switch (cS) {
@@ -60,32 +62,32 @@ import java.util.*;
             }
 
 
-            System.out.println(d.line1 + "\n WELCOME " + playerName + " TO THE DUNGEON! YOUR CHARACTER IS A "
-                    + character + "!\n" + d.line1);
+            System.out.println("\t" + d.line1 + "\n\t  WELCOME " + playerName + " TO THE DUNGEON! YOUR CHARACTER IS A "
+                    + character + "!\n");
 
             int characterHealth = health;
 
             GAME:
             while (true) {
-                System.out.println(d.line1);
+                System.out.println("\t" + d.line1);
 
                 int enemyHealth = rand.nextInt(e.maxEnemyHealth);
 
                 String enemy = e.enemies[rand.nextInt(e.enemies.length)];
-                System.out.println("\n\t# A WILD " + enemy + " HAS APPEARED! #\n");
-                System.out.println(d.line1);
+                System.out.println("\n\t\t\t # A WILD " + enemy + " HAS APPEARED! #\n");
+                System.out.println("\t" + d.line1);
 
                 label:
-                while (enemyHealth > 0) {
-                    System.out.println("\tYOUR HP: " + characterHealth);
-                    System.out.println("\t" + enemy + "'S HP: " + enemyHealth);
-                    System.out.println("\n\tWHAT WOULD YOU LIKE TO DO?");
-                    System.out.println("\t-> PRESS 1 TO USE SWORD");
-                    System.out.println("\t-> PRESS 2 TO USE STAFF");
-                    System.out.println("\t-> PRESS 3 TO USE FISTS");
-                    System.out.println("\t-> PRESS 4 TO USE RUBBER CHICKEN");
-                    System.out.println("\t-> PRESS 5 TO HEAL");
-                    System.out.println("\t-> PRESS 6 TO RUN");
+                while (enemyHealth > 10) {
+                    System.out.println("\t    -* YOUR HP: " + characterHealth);
+                    System.out.println("\t    -* " + enemy + "'S HP: " + enemyHealth);
+                    System.out.println("\n\t   WHAT WOULD YOU LIKE TO DO?");
+                    System.out.println("\t    -> PRESS 1 TO USE SWORD");
+                    System.out.println("\t    -> PRESS 2 TO USE STAFF");
+                    System.out.println("\t    -> PRESS 3 TO USE FISTS");
+                    System.out.println("\t    -> PRESS 4 TO USE RUBBER CHICKEN");
+                    System.out.println("\t    -> PRESS 5 TO HEAL");
+                    System.out.println("\t    -> PRESS 6 TO RUN");
 
                     String input = in.nextLine();
                     switch (input) {
@@ -166,7 +168,7 @@ import java.util.*;
                             break;
                         case "6":
                             System.out.println("\tYOU RAN AWAY FROM THE " + enemy + "!");
-                            continue GAME;
+                            continue GAME; //This will loop back to the Game label statement
                         default:
                             System.out.println("\tINVALID COMMAND!!!");
                             break;
@@ -179,16 +181,18 @@ import java.util.*;
                     break;
                 }
 
-                System.out.println(" # " + enemy + " WAS DEFEATED! # ");
-                System.out.println(" # YOU HAVE " + characterHealth + " HP LEFT #");
+                System.out.println("\n\t " + d.line2);
+                System.out.println("\n\t\t  # " + enemy + " WAS DEFEATED! # ");
+                System.out.println("\t\t  # YOU HAVE " + characterHealth + " HP LEFT #");
                 if (rand.nextInt(100) < p.healthPotionDropChance) {
                     p.numHealthPotions++;
-                    System.out.println(" # THE " + enemy + " DROPPED A HEALTH POTION! # ");
-                    System.out.println(" # YOU NOW HAVE " + p.numHealthPotions + " HEALTH POTION(S). # ");
+                    System.out.println("\t # A HEALTH POTION WAS DROPPED! # ");
+                    System.out.println("\t # YOU NOW HAVE " + p.numHealthPotions + " HEALTH POTION(S). # ");
                 }
-                System.out.println("WOULD YOU LIKE TO CONTINUE?");
-                System.out.println("\t-> PRESS 1 FOR YES");
-                System.out.println("\t-> PRESS 2 FOR NO");
+                System.out.println("\n\t " + d.line2);
+                System.out.println("\n\tWOULD YOU LIKE TO CONTINUE?");
+                System.out.println("\t -> PRESS 1 FOR YES");
+                System.out.println("\t -> PRESS 2 FOR NO");
                 String input = in.nextLine();
 
                 while (!input.equals("1") && !input.equals("2")) {
@@ -204,8 +208,8 @@ import java.util.*;
             }
 
 
-            System.out.println("\n" + d.line3);
+            System.out.println("\n" + d.line4);
             System.out.println("THANKS FOR PLAYING");
-            System.out.println(d.line3);
+            System.out.println(d.line4);
         }
     }
