@@ -79,7 +79,7 @@ import java.util.*;
 
                 label:
                 while (enemyHealth > 10) {
-                    System.out.println("\t    -* YOUR HP: " + characterHealth);
+                    System.out.println("\n\t    -* YOUR HP: " + characterHealth);
                     System.out.println("\t    -* " + enemy + "'S HP: " + enemyHealth);
                     System.out.println("\n\t   WHAT WOULD YOU LIKE TO DO?");
                     System.out.println("\t    -> PRESS 1 TO USE SWORD");
@@ -183,7 +183,7 @@ import java.util.*;
 
                 System.out.println("\n\t " + d.line2);
                 System.out.println("\n\t\t  # " + enemy + " WAS DEFEATED! # ");
-                System.out.println("\t\t  # YOU HAVE " + characterHealth + " HP LEFT #");
+                System.out.println("\t\t   # YOU HAVE " + characterHealth + " HP LEFT #");
                 if (rand.nextInt(100) < p.healthPotionDropChance) {
                     p.numHealthPotions++;
                     System.out.println("\t # A HEALTH POTION WAS DROPPED! # ");
